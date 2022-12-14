@@ -2,21 +2,21 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "newPantryapp",
+    "database": "newPantryApp",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "postgres",
-    "database": "newPantryapp_test",
+    "database": "newPantryApp_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "postgres",
-    "database": "newPantryapp_production",
+    "database": "newPantryApp_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

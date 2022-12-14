@@ -4,7 +4,7 @@ const sequelize = new Sequelize(process.env.PG_URI);
 class User extends Model { }
 
 User.init({
-    id: {
+    user_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
