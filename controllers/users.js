@@ -1,8 +1,17 @@
-const router = require('express').Router()
+const express = require('express')
+const users = express.Router()
+const User = require('../models/usersModel.js')
 
-router.get('/', (req, res) => {
-    res.send('GET /users')
+
+//INDEX
+users.get('/', (req, res) => {
+    res.send(User)
+})
+
+//SHOW
+users.get('/:arrayIndex', (req, res) => {
+    res.send(User[req.params.arrayIndex])
 })
 
 
-module.exports = router
+module.exports = users
