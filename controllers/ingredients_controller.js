@@ -1,19 +1,39 @@
 const express = require('express')
-const ingrs = express.Router()
+const defineCurrentUser = require('../middleware/defineCurrentUser')
+const ingredients = express.Router()
 const db = require('../models')
 const { Ingredient } = db
 
 //find all ingredients
-ingrs.get('/', async (req, res) => {
-
-    try {
-        const foundIngr = await Ingredient.findAll()
-        res.status(400).json(foundIngr)
-    } catch (error) {
-        res.status(500).json(error)
-        console.log(error)
-    }
+ingredients.get('/', async (req, res) => {
+    const foundIngredient = await Ingredient.findAll()
+    res.json(foundIngredient)
 })
 
+//find all ingredients belonging to current user
+ingredients.get('/:id', async (req, res) => {
+    const foundUserIngredient = await Ingredient.findAll({
+        where: {
+            user_id: req.params.id
+        }
+    })
+    res.status(200).json(foundUserIngredient)
 
-module.exports = ingrs
+})
+
+//add new ingredient
+ingredients.post('/', async (req, res) => {
+    const newIngredient = await Ingredient.create({
+        ...req.body,
+        ingredient_name: req.body.ingredient_name,
+        user_id: req.body.user_id
+    })
+    res.json(newIngredient)
+
+})
+
+//delete an ingredient
+ingredients.delete('/:id')
+
+
+module.exports = ingredients
