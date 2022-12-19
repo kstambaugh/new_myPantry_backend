@@ -32,6 +32,16 @@ ingredients.post('/', async (req, res) => {
 
 })
 
+ingredients.put('/:ingr_id', async (req, res) => {
+    const findIngredient = await Ingredient.findByPk(req.params.ingr_id)
+    findIngredient.update(
+        { inPantry: req.body.inPantry },
+        { inGrocery: req.body.inGrocery },
+    )
+    res.json(findIngredient)
+
+})
+
 //delete an ingredient
 ingredients.delete('/:id')
 

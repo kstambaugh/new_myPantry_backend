@@ -3,7 +3,6 @@ const dotenv = require('dotenv')
 const app = express();
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const defineCurrentUser = require('./middleware/defineCurrentUser')
 const cookieSession = require('cookie-session')
 
 
@@ -20,7 +19,7 @@ app.use(cookieSession({
 }))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-// app.use(defineCurrentUser)
+
 app.get("/", (req, res) => {
     res.send("hello world");
 });
